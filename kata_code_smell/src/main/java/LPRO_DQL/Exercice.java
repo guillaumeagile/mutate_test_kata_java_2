@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 
-//COMPILER AVEC JDK 15 !!!!!
 public class Exercice {
 
     public Map<Integer, String> f1(int a1, List<Integer> a2) {
-        var a7 = new HashMap<Integer, String>();
+        HashMap<Integer, String> a7 = new HashMap<Integer, String>();
         int a5 = 0;
         String a9 = "";
         for (int a3 = 0; a3 < a2.size() && a3 < a1; a3++) {

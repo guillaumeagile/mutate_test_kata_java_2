@@ -12,6 +12,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<assertj.version>3.6.2</assertj.version>
+		<pitest.version>1.7.3</pitest.version>
 	</properties>
 
 	<dependencyManagement>
@@ -60,15 +61,15 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>15</source>
-					<target>15</target>
-					<compilerArgs>--enable-preview</compilerArgs>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.source}</target>
+<!--					<compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.17</version>
+				<version>3.0.0-M5</version>
 				<configuration>
 					<includes>
 						<include>**/*Test.java</include>
@@ -78,5 +79,43 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>pitest</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.pitest</groupId>
+						<artifactId>pitest-maven</artifactId>
+						<version>${pitest.version}</version>
+						<executions>
+							<execution>
+								<id>pitest</id>
+								<phase>test</phase>
+								<goals>
+									<goal>mutationCoverage</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+<!--							<targetClasses>-->
+<!--								<param>LPRO_DQL.*</param>-->
+<!--							</targetClasses>-->
+<!--							<targetTests>-->
+<!--								<param>LPRO_DQL.*</param>-->
+<!--							</targetTests>-->
+							<mutators>
+								<mutator>DEFAULTS</mutator>
+								<!--<mutator>ALL</mutator>-->
+							</mutators>
+							<skipTests>${skipTests}</skipTests>
+
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
