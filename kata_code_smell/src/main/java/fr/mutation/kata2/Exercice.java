@@ -1,4 +1,4 @@
-package LPRO_DQL;
+package fr.mutation.kata2;
 
 import java.util.HashMap;
 import java.util.List;
