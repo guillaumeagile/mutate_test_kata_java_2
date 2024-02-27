@@ -9,10 +9,10 @@
 	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.source>3.12.1</maven.compiler.source>
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-		<assertj.version>3.6.2</assertj.version>
-		<pitest.version>1.7.3</pitest.version>
+		<assertj.version>3.25.3</assertj.version>
+		<pitest.version>1.15.8</pitest.version>
 	</properties>
 
 	<dependencyManagement>
@@ -34,9 +34,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>pl.pragmatists</groupId>
-			<artifactId>JUnitParams</artifactId>
-			<version>1.0.6</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.10.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -49,8 +49,14 @@
 			<dependency>
 				<groupId>io.vavr</groupId>
 				<artifactId>vavr</artifactId>
-				<version>0.10.3</version>
+				<version>0.10.4</version>
 			</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.21.1</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -59,7 +65,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>${maven.compiler.source}</version>
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.source}</target>
@@ -69,7 +75,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
+				<version>3.2.5</version>
 				<configuration>
 					<includes>
 						<include>**/*Test.java</include>
@@ -106,10 +112,11 @@
 <!--								<param>LPRO_DQL.*</param>-->
 <!--							</targetTests>-->
 							<mutators>
-								<mutator>DEFAULTS</mutator>
+<!--								<mutator>DEFAULTS</mutator>-->
+								<mutator>STRONGER</mutator>
 								<!--<mutator>ALL</mutator>-->
 							</mutators>
-							<skipTests>${skipTests}</skipTests>
+<!--							<skipTests>${skipTests}</skipTests>-->
 
 						</configuration>
 					</plugin>
