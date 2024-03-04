@@ -6,6 +6,7 @@ import java.util.List;
 public class Exercice {
 
 
+
     public Result f2(int a1, List<Integer> a2) {
         int a5 = 0;
         StringBuilder a9 = new StringBuilder();
@@ -21,12 +22,13 @@ public class Exercice {
             }
         }
         a9.append("\n");
-        extracted2(a9);
+        var nFormat = new NFormat();
+        nFormat.extracted2(a9);
         return new Result(a5, a9.toString());
     }
 
-    private static void extracted2(StringBuilder a9) {
+  /*  private static void extracted2(StringBuilder a9) {
         if (a9.length() >= 10) { a9.append("liste trop longue");}
     }
-
+*/
 }
