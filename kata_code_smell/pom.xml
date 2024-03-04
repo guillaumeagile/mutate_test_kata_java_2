@@ -117,8 +117,8 @@
 <!--							</targetTests>-->
 							<mutators>
 <!--								<mutator>ALL</mutator>-->
-								<mutator>DEFAULTS</mutator>
-								<!--<mutator>STRONGER</mutator>-->
+								<mutator>STRONGER</mutator>
+								<!--<mutator></mutator>DEFAULTS-->
 							</mutators>
 <!--							<skipTests>${skipTests}</skipTests>-->
 
