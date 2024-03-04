@@ -21,18 +21,13 @@ public class ExerciceTests {
         final Exercice exercice = new Exercice();
         final List<Integer> listeEntiers = new ArrayList<>();
         //when
-        Map<Integer, String> actual = exercice.f1(1, listeEntiers);
+        Result dualResult = exercice.f2(1, listeEntiers);
         //ASSERT
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
-        //dans le 1er element de la Map<Int, String> on trouve la clé qui est une entier qui contient le nombre d'entiers positifs trouvés
-        // eton trouve dans la valeur <String> de cette map, la chaine de caractère
 
-
-        Assertions.assertThat(dualResult.getKey()).isZero();
-
+        Assertions.assertThat(dualResult.a()).isZero();
 
         //2e verification:  que contient la chaine de caractère?
-        Assertions.assertThat(dualResult.getValue()).isEqualTo("\n");
+        Assertions.assertThat(dualResult.b()).isEqualTo("\n");
     }
 
     @Test
@@ -42,15 +37,14 @@ public class ExerciceTests {
         final List<Integer> listeEntiers = new ArrayList<>();
         listeEntiers.add(8);
         //when
-        Map<Integer, String> actual = exercice.f1(1, listeEntiers);
+        Result dualResult = exercice.f2(1, listeEntiers);
         //then
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
-        Assertions.assertThat(dualResult.getKey()).isZero();
+        Assertions.assertThat(dualResult.a()).isZero();
         //2e verification:  que contient la chaine de caractère?
-        Assertions.assertThat(dualResult.getValue()).isEqualTo("8 \n");
+        Assertions.assertThat(dualResult.b()).isEqualTo("8 \n");
     }
 
-    // @Test
+    @Test
     public void listeAvecDeuxEntiersNegatifs() {
         //given
         final Exercice exercice = new Exercice();
@@ -58,12 +52,11 @@ public class ExerciceTests {
         listeEntiers.add(-1);
         listeEntiers.add(-2);
         //when
-        Map<Integer, String> actual = exercice.f1(2, listeEntiers);
+        Result dualResult = exercice.f2(2, listeEntiers);
         //then
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
-        Assertions.assertThat(dualResult.getKey()).isEqualTo(2);
+        Assertions.assertThat(dualResult.a()).isEqualTo(2);
         //2e verification:  que contient la chaine de caractère?
-        Assertions.assertThat(dualResult.getValue()).isEqualTo("\n");
+        Assertions.assertThat(dualResult.b()).isEqualTo("\n");
     }
 
     @Test
@@ -74,11 +67,25 @@ public class ExerciceTests {
         listeEntiers.add(-9);
         listeEntiers.add(9);
         //when / ACT
-        Map<Integer, String> actual = exercice.f1(2, listeEntiers);
+        Result dualResult = exercice.f2(2, listeEntiers);
         //then / ASSERT
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
-        Assertions.assertThat(dualResult.getKey()).isEqualTo( (2 - 1));
-        Assertions.assertThat(dualResult.getValue()).isEqualTo("9 \n");
+        Assertions.assertThat(dualResult.a()).isEqualTo( (2 - 1));
+        Assertions.assertThat(dualResult.b()).isEqualTo("9 \n");
+    }
+
+    @Test
+    public void listeAvec2PositifsEt0Neg() {  // règle des 3 A
+        //given  / ARRANGE
+        final Exercice exercice = new Exercice();
+        final List<Integer> listeEntiers = new ArrayList<>();
+        listeEntiers.add(4);   //1
+        listeEntiers.add(9);    //2
+
+        //when / ACT
+        Result dualResult = exercice.f2(1, listeEntiers);
+        //then / ASSERT
+        Assertions.assertThat(dualResult.a()).isZero();
+        Assertions.assertThat(dualResult.b()).isEqualTo("4 \n");
     }
 
     @Test
@@ -93,11 +100,10 @@ public class ExerciceTests {
         listeEntiers.add(-9);   // non pris en compte
 
         //when / ACT
-        Map<Integer, String> actual = exercice.f1(4, listeEntiers);
+        Result dualResult = exercice.f2(4, listeEntiers);
         //then / ASSERT
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
-        Assertions.assertThat(dualResult.getKey()).isEqualTo(1);
-        Assertions.assertThat(dualResult.getValue()).isEqualTo("4 9 8 \n");
+        Assertions.assertThat(dualResult.a()).isEqualTo(1);
+        Assertions.assertThat(dualResult.b()).isEqualTo("4 9 8 \n");
     }
     
     // lancer les tests avec du code coverage
@@ -119,9 +125,9 @@ public class ExerciceTests {
         listeEntiers.add(8);
 
         //when / ACT
-        Map<Integer, String> actual = exercice.f1(2, listeEntiers);
+        Result dualResult = exercice.f2(2, listeEntiers);
         //then / ASSERT
-        Entry<Integer, String> dualResult = actual.entrySet().iterator().next();
+
 
     }
 

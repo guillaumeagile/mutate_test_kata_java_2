@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Exercice {
 
-    public Map<Integer, String> f1(int a1, List<Integer> a2) {
-        HashMap<Integer, String> a7 = new HashMap<Integer, String>();
+
+    public Result f2(int a1, List<Integer> a2) {
         int a5 = 0;
         StringBuilder a9 = new StringBuilder();
         for (int a3 = 0; a3 < a2.size() && a3 < a1; a3++) {
@@ -21,7 +21,7 @@ public class Exercice {
             }
         }
         a9.append("\n");
-        a7.put(a5, a9.toString());
-        return a7;
+
+        return new Result(a5, a9.toString());
     }
 }
