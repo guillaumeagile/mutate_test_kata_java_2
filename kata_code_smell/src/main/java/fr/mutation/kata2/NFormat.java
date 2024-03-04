@@ -2,6 +2,9 @@ package fr.mutation.kata2;
 
 public class NFormat {
     public void extracted2(StringBuilder a9) {
-        if (a9.length() >= 10) { a9.append("liste trop longue");}
+        var limite = 9;
+        if (a9.length() >= limite) {
+            a9.append("liste trop longue");
+        }
     }
 }

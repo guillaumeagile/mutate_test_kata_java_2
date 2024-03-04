@@ -116,8 +116,8 @@
 <!--								<param>LPRO_DQL.*</param>-->
 <!--							</targetTests>-->
 							<mutators>
-<!--								<mutator>ALL</mutator>-->
-								<mutator>STRONGER</mutator>
+<!--						STRONGER		<mutator></mutator>-->
+								<mutator>ALL</mutator>
 								<!--<mutator></mutator>DEFAULTS-->
 							</mutators>
 <!--							<skipTests>${skipTests}</skipTests>-->
